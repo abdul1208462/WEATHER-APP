@@ -2,4 +2,4 @@
 THIS IS A SIMPLE WEATHER APP BUILY WITH PYTHON AND DEPLYOED WITH STREAMLIT
 
 # LIVE DEMO
-https://weather-app-nvsvhaviqlu5zaybw3aosh.streamlit.app/
+(https://weather-app-nvsvhaviqlu5zaybw3aosh.streamlit.app/)
