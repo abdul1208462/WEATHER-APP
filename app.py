@@ -50,8 +50,8 @@ if st.button("Get Weather"):
     try:
         current = requests.get(current_url).json()
 
-        if current["cod"] != 200:
-            st.error("City not found")
+        if str(current["cod"]) != "200":
+            st.error(current)
             st.stop()
 
         temp = current["main"]["temp"]
