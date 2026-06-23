@@ -4,7 +4,7 @@ import streamlit as st
 
 st.set_page_config(page_title="Weather App", page_icon="🌦")
 
-API_KEY = st.secrets["85c9c74e55a160c908f4825d97ea5dfd"]
+API_KEY = st.secrets["API_KEY"]
 
 st.title("🌦 Weather Forecast App")
 
