@@ -80,15 +80,29 @@ https://weather-app-nvsvhaviqlu5zaybw3aosh.streamlit.app/
 
 ## How It Works
 
+## How It Works
+
 1. Enter a city name.
-2. Click **Get Weather**.
-3. The app sends a request to the OpenWeatherMap API.
-4. The API returns weather information in JSON format.
-5. The application displays:
-   - Temperature
-   - Weather condition
-   - Humidity
-   - Wind speed
-   - Country
-   - Weather icon
-   - 5-day forecast
+2. (Optional) Select an event such as:
+   - Wedding
+   - Cricket Match
+   - Picnic
+   - Construction Work
+   - Bike Ride
+3. Click **Get Weather**.
+4. The application validates the input and applies rate limiting to prevent excessive API requests.
+5. The app securely retrieves the API key from **Streamlit Secrets**.
+6. The app sends requests to the OpenWeatherMap API for:
+   - Current weather
+   - 5-day weather forecast
+7. The API returns weather information in JSON format.
+8. The application displays:
+   - 🌡 Temperature
+   - 🌤 Weather condition
+   - 💧 Humidity
+   - 🌬 Wind speed
+   - 🌍 Country
+   - 🖼 Weather icon
+   - 📅 5-day forecast
+9. The app answers **"Should I go outside today?"** based on the current weather conditions.
+10. If an event is selected, the app provides personalized weather recommendations for that event.
