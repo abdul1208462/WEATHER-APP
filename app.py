@@ -1,12 +1,16 @@
 
 import requests
 import streamlit as st
+import time
+import re
 
 st.set_page_config(page_title="Weather App", page_icon="🌦")
 
 API_KEY = st.secrets["API_KEY"]
 
 st.title("🌦 Weather Forecast App")
+if "last_request" not in st.session_state:
+    st.session_state.last_request = 0
 
 city = st.text_input("Enter City Name")
 
@@ -37,6 +41,31 @@ def get_weather_emoji(weather_id):
 
 if st.button("Get Weather"):
 
+    # Remove extra spaces
+ city = city.strip()
+
+# Check if input is empty
+if not city:
+    st.error("Please enter a city name.")
+    st.stop()
+
+# Maximum length
+if len(city) > 50:
+    st.error("City name is too long.")
+    st.stop()
+
+# Allow only letters, spaces, hyphens and apostrophes
+if not re.fullmatch(r"[A-Za-z\s\-']+", city):
+    st.error("Invalid city name. Only letters, spaces, hyphens (-), and apostrophes (') are allowed.")
+    st.stop()
+    current_time = time.time()
+
+    if current_time - st.session_state.last_request < 10:
+     st.warning("⏳ Please wait 10 seconds before making another request.")
+    st.stop()
+
+    st.session_state.last_request = current_time
+
     current_url = (
         f"https://api.openweathermap.org/data/2.5/weather"
         f"?q={city}&appid={API_KEY}&units=metric"
@@ -52,7 +81,7 @@ if st.button("Get Weather"):
 
         if str(current["cod"]) != "200":
             st.error(current)
-            st.stop()
+       
 
         temp = current["main"]["temp"]
         humidity = current["main"]["humidity"]
