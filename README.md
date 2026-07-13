@@ -75,6 +75,9 @@ streamlit run app.py
 
 The application will open automatically in your browser.
 
+## Live Demo
+https://weather-app-nvsvhaviqlu5zaybw3aosh.streamlit.app/
+
 ## How It Works
 
 1. Enter a city name.
